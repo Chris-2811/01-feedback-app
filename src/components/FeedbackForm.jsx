@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Card from './shared/Card';
-import Button from './shared/Button';
-import RatingSelect from './RatingSelect';
-import FeedbackContext from '../context/FeedbackContext';
+import React, { useContext, useEffect, useState } from "react";
+import Card from "./shared/Card";
+import Button from "./shared/Button";
+import RatingSelect from "./RatingSelect";
+import FeedbackContext from "../context/FeedbackContext";
 
 function FeedbackForm() {
-  const [text, setText] = useState('');
-  const [message, setMessage] = useState('');
+  const [text, setText] = useState("");
+  const [message, setMessage] = useState("");
   const [rating, setRating] = useState(10);
   const [btnDisabled, setBtnDisabled] = useState(true);
 
@@ -23,13 +23,13 @@ function FeedbackForm() {
   }, [feedbackEdit]);
 
   function handleTextChange(e) {
-    if (e.target.value === '') {
+    if (e.target.value === "") {
       setMessage(null);
       setBtnDisabled(true);
     }
 
     if (e.target.value.length < 10) {
-      setMessage('Input must be at least 10 characters');
+      setMessage("Input must be at least 10 characters");
       setBtnDisabled(true);
     } else {
       setMessage(null);
@@ -51,33 +51,40 @@ function FeedbackForm() {
         updateFeedback(feedbackEdit.item.id, newFeedback);
       } else {
         addFeedback(newFeedback);
-        setText('');
+        setText("");
       }
 
       // NOTE: reset to default state after submission
       setBtnDisabled(true); // 👈  add this line to reset disabled
       setRating(10); //👈 add this line to set rating back to 10
-      setText('');
+      setText("");
     }
   };
 
   return (
     <Card>
       <form onSubmit={handleSubmit}>
-        <h2>How would you rate your service with us?</h2>
-        <RatingSelect select={setRating} selected={rating} />
-        <div className='input-group'>
+        <h2>How would you rate your service us?</h2>
+        <RatingSelect
+          select={setRating}
+          selected={rating}
+        />
+        <div className="input-group">
           <input
             onChange={handleTextChange}
-            type='text'
-            placeholder='Write a review'
+            type="text"
+            placeholder="Write a review"
             value={text}
           />
-          <Button type='submit' className='btn' isDisabled={btnDisabled}>
+          <Button
+            type="submit"
+            className="btn"
+            isDisabled={btnDisabled}
+          >
             Send
           </Button>
         </div>
-        {message && <div className='message'>{message}</div>}
+        {message && <div className="message">{message}</div>}
       </form>
     </Card>
   );

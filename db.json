@@ -11,14 +11,14 @@
       "text": "This is feedback item 2 coming from the backend"
     },
     {
-      "text": "this is a new review",
-      "rating": 4,
-      "id": 3
-    },
-    {
-      "text": "This is an edited review",
+      "text": "This is a test review",
       "rating": 4,
       "id": 4
+    },
+    {
+      "text": "This is a new review",
+      "rating": 10,
+      "id": 5
     }
   ]
 }
